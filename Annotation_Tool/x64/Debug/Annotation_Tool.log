@@ -1,0 +1,7 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Microscope.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  MyForm.cpp
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1017): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1023): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1081): warning C4838: conversion from 'int' to 'double' requires a narrowing conversion
+  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  Annotation_Tool.vcxproj -> D:\Seun Backup\Seun Project\Annotation_Tool\x64\Debug\Annotation_Tool.exe
