@@ -1,7 +1,14 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Microscope.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   MyForm.cpp
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1017): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1023): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1081): warning C4838: conversion from 'int' to 'double' requires a narrowing conversion
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(881): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(899): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(957): warning C4838: conversion from 'int' to 'double' requires a narrowing conversion
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1195): warning C4838: conversion from 'int' to 'double' requires a narrowing conversion
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1182): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1189): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: see declaration of 'fscanf'
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1194): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: see declaration of 'fscanf'
   MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Annotation_Tool.vcxproj -> D:\Seun Backup\Seun Project\Annotation_Tool\x64\Debug\Annotation_Tool.exe

@@ -8,7 +8,7 @@ struct Box {
 	double y;
 	double width;
 	double height;
-	std::string label = "";
+	int label=-1;
 };
 
 namespace Annotation_Tool {
@@ -99,13 +99,23 @@ namespace Annotation_Tool {
 
 	private: System::Windows::Forms::Panel^  panel4;
 	private: System::Windows::Forms::TextBox^  txt_class;
-	private: System::Windows::Forms::Button^  btn_Clear;
+	private: System::Windows::Forms::Button^  btn_Generate;
+
 	private: System::Windows::Forms::FolderBrowserDialog^  folderBrowserDialog1;
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  deleteToolStripMenuItem;
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip2;
 	private: System::Windows::Forms::ToolStripMenuItem^  deleteToolStripMenuItem1;
 	private: System::Windows::Forms::Button^  btnRead;
+	private: System::Windows::Forms::Button^  btn_Class;
+	private: System::Windows::Forms::Button^  btn_Clear;
+	private: System::Windows::Forms::Panel^  panelGenerate;
+	private: System::Windows::Forms::Button^  btnYOLO;
+
+
+
+
+
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -131,10 +141,15 @@ namespace Annotation_Tool {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->panelSideMenu = (gcnew System::Windows::Forms::Panel());
 			this->btn_Clear = (gcnew System::Windows::Forms::Button());
+			this->panelGenerate = (gcnew System::Windows::Forms::Panel());
+			this->btnYOLO = (gcnew System::Windows::Forms::Button());
+			this->btn_Generate = (gcnew System::Windows::Forms::Button());
 			this->btnPrev = (gcnew System::Windows::Forms::Button());
 			this->btnNext = (gcnew System::Windows::Forms::Button());
 			this->btnSave = (gcnew System::Windows::Forms::Button());
 			this->panelFileSubMenu = (gcnew System::Windows::Forms::Panel());
+			this->btn_Class = (gcnew System::Windows::Forms::Button());
+			this->btnRead = (gcnew System::Windows::Forms::Button());
 			this->btnDir = (gcnew System::Windows::Forms::Button());
 			this->btnOpen = (gcnew System::Windows::Forms::Button());
 			this->btnFile = (gcnew System::Windows::Forms::Button());
@@ -163,8 +178,8 @@ namespace Annotation_Tool {
 			this->deleteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contextMenuStrip2 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->deleteToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->btnRead = (gcnew System::Windows::Forms::Button());
 			this->panelSideMenu->SuspendLayout();
+			this->panelGenerate->SuspendLayout();
 			this->panelFileSubMenu->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -183,6 +198,8 @@ namespace Annotation_Tool {
 			this->panelSideMenu->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(124)), static_cast<System::Int32>(static_cast<System::Byte>(124)),
 				static_cast<System::Int32>(static_cast<System::Byte>(230)));
 			this->panelSideMenu->Controls->Add(this->btn_Clear);
+			this->panelSideMenu->Controls->Add(this->panelGenerate);
+			this->panelSideMenu->Controls->Add(this->btn_Generate);
 			this->panelSideMenu->Controls->Add(this->btnPrev);
 			this->panelSideMenu->Controls->Add(this->btnNext);
 			this->panelSideMenu->Controls->Add(this->btnSave);
@@ -201,15 +218,61 @@ namespace Annotation_Tool {
 			this->btn_Clear->FlatAppearance->BorderSize = 0;
 			this->btn_Clear->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_Clear->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btn_Clear->Location = System::Drawing::Point(0, 530);
+			this->btn_Clear->Location = System::Drawing::Point(0, 683);
 			this->btn_Clear->Name = L"btn_Clear";
 			this->btn_Clear->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->btn_Clear->Size = System::Drawing::Size(151, 60);
-			this->btn_Clear->TabIndex = 5;
+			this->btn_Clear->Size = System::Drawing::Size(134, 60);
+			this->btn_Clear->TabIndex = 8;
 			this->btn_Clear->Text = L"Clear";
 			this->btn_Clear->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btn_Clear->UseVisualStyleBackColor = true;
 			this->btn_Clear->Click += gcnew System::EventHandler(this, &MyForm::btn_Clear_Click);
+			// 
+			// panelGenerate
+			// 
+			this->panelGenerate->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(161)), static_cast<System::Int32>(static_cast<System::Byte>(161)),
+				static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->panelGenerate->Controls->Add(this->btnYOLO);
+			this->panelGenerate->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panelGenerate->Location = System::Drawing::Point(0, 626);
+			this->panelGenerate->Name = L"panelGenerate";
+			this->panelGenerate->Size = System::Drawing::Size(134, 57);
+			this->panelGenerate->TabIndex = 7;
+			this->panelGenerate->Visible = false;
+			// 
+			// btnYOLO
+			// 
+			this->btnYOLO->Dock = System::Windows::Forms::DockStyle::Top;
+			this->btnYOLO->FlatAppearance->BorderSize = 0;
+			this->btnYOLO->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnYOLO->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnYOLO->ForeColor = System::Drawing::Color::Azure;
+			this->btnYOLO->Location = System::Drawing::Point(0, 0);
+			this->btnYOLO->Name = L"btnYOLO";
+			this->btnYOLO->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
+			this->btnYOLO->Size = System::Drawing::Size(134, 41);
+			this->btnYOLO->TabIndex = 0;
+			this->btnYOLO->Text = L"YOLO Files";
+			this->btnYOLO->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->btnYOLO->UseVisualStyleBackColor = true;
+			this->btnYOLO->Click += gcnew System::EventHandler(this, &MyForm::btnYOLO_Click);
+			// 
+			// btn_Generate
+			// 
+			this->btn_Generate->Dock = System::Windows::Forms::DockStyle::Top;
+			this->btn_Generate->FlatAppearance->BorderSize = 0;
+			this->btn_Generate->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_Generate->ForeColor = System::Drawing::Color::GhostWhite;
+			this->btn_Generate->Location = System::Drawing::Point(0, 566);
+			this->btn_Generate->Name = L"btn_Generate";
+			this->btn_Generate->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
+			this->btn_Generate->Size = System::Drawing::Size(134, 60);
+			this->btn_Generate->TabIndex = 5;
+			this->btn_Generate->Text = L"Generate";
+			this->btn_Generate->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->btn_Generate->UseVisualStyleBackColor = true;
+			this->btn_Generate->Click += gcnew System::EventHandler(this, &MyForm::btn_Generate_Click);
 			// 
 			// btnPrev
 			// 
@@ -217,10 +280,10 @@ namespace Annotation_Tool {
 			this->btnPrev->FlatAppearance->BorderSize = 0;
 			this->btnPrev->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnPrev->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btnPrev->Location = System::Drawing::Point(0, 470);
+			this->btnPrev->Location = System::Drawing::Point(0, 506);
 			this->btnPrev->Name = L"btnPrev";
 			this->btnPrev->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->btnPrev->Size = System::Drawing::Size(151, 60);
+			this->btnPrev->Size = System::Drawing::Size(134, 60);
 			this->btnPrev->TabIndex = 4;
 			this->btnPrev->Text = L"Prev Image";
 			this->btnPrev->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -233,10 +296,10 @@ namespace Annotation_Tool {
 			this->btnNext->FlatAppearance->BorderSize = 0;
 			this->btnNext->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnNext->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btnNext->Location = System::Drawing::Point(0, 410);
+			this->btnNext->Location = System::Drawing::Point(0, 446);
 			this->btnNext->Name = L"btnNext";
 			this->btnNext->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->btnNext->Size = System::Drawing::Size(151, 60);
+			this->btnNext->Size = System::Drawing::Size(134, 60);
 			this->btnNext->TabIndex = 3;
 			this->btnNext->Text = L"Next Image";
 			this->btnNext->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -249,10 +312,10 @@ namespace Annotation_Tool {
 			this->btnSave->FlatAppearance->BorderSize = 0;
 			this->btnSave->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnSave->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btnSave->Location = System::Drawing::Point(0, 350);
+			this->btnSave->Location = System::Drawing::Point(0, 386);
 			this->btnSave->Name = L"btnSave";
 			this->btnSave->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->btnSave->Size = System::Drawing::Size(151, 60);
+			this->btnSave->Size = System::Drawing::Size(134, 60);
 			this->btnSave->TabIndex = 2;
 			this->btnSave->Text = L"Save Image";
 			this->btnSave->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
@@ -263,28 +326,65 @@ namespace Annotation_Tool {
 			// 
 			this->panelFileSubMenu->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(161)),
 				static_cast<System::Int32>(static_cast<System::Byte>(161)), static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->panelFileSubMenu->Controls->Add(this->btn_Class);
 			this->panelFileSubMenu->Controls->Add(this->btnRead);
 			this->panelFileSubMenu->Controls->Add(this->btnDir);
 			this->panelFileSubMenu->Controls->Add(this->btnOpen);
 			this->panelFileSubMenu->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panelFileSubMenu->Location = System::Drawing::Point(0, 213);
 			this->panelFileSubMenu->Name = L"panelFileSubMenu";
-			this->panelFileSubMenu->Size = System::Drawing::Size(151, 137);
+			this->panelFileSubMenu->Size = System::Drawing::Size(134, 173);
 			this->panelFileSubMenu->TabIndex = 1;
 			this->panelFileSubMenu->Visible = false;
+			// 
+			// btn_Class
+			// 
+			this->btn_Class->FlatAppearance->BorderSize = 0;
+			this->btn_Class->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_Class->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_Class->ForeColor = System::Drawing::Color::Azure;
+			this->btn_Class->Location = System::Drawing::Point(0, 123);
+			this->btn_Class->Name = L"btn_Class";
+			this->btn_Class->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
+			this->btn_Class->Size = System::Drawing::Size(151, 41);
+			this->btn_Class->TabIndex = 3;
+			this->btn_Class->Text = L"Class File";
+			this->btn_Class->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->btn_Class->UseVisualStyleBackColor = true;
+			this->btn_Class->Click += gcnew System::EventHandler(this, &MyForm::btn_Class_Click);
+			// 
+			// btnRead
+			// 
+			this->btnRead->FlatAppearance->BorderSize = 0;
+			this->btnRead->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnRead->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnRead->ForeColor = System::Drawing::Color::Azure;
+			this->btnRead->Location = System::Drawing::Point(0, 82);
+			this->btnRead->Name = L"btnRead";
+			this->btnRead->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
+			this->btnRead->Size = System::Drawing::Size(151, 41);
+			this->btnRead->TabIndex = 2;
+			this->btnRead->Text = L"Labelled Files";
+			this->btnRead->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->btnRead->UseVisualStyleBackColor = true;
+			this->btnRead->Click += gcnew System::EventHandler(this, &MyForm::btnRead_Click);
 			// 
 			// btnDir
 			// 
 			this->btnDir->Dock = System::Windows::Forms::DockStyle::Top;
 			this->btnDir->FlatAppearance->BorderSize = 0;
 			this->btnDir->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnDir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->btnDir->ForeColor = System::Drawing::Color::Azure;
 			this->btnDir->Location = System::Drawing::Point(0, 41);
 			this->btnDir->Name = L"btnDir";
 			this->btnDir->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
-			this->btnDir->Size = System::Drawing::Size(151, 41);
+			this->btnDir->Size = System::Drawing::Size(134, 41);
 			this->btnDir->TabIndex = 1;
-			this->btnDir->Text = L"Open Dir";
+			this->btnDir->Text = L"Image Dir";
 			this->btnDir->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btnDir->UseVisualStyleBackColor = true;
 			this->btnDir->Click += gcnew System::EventHandler(this, &MyForm::btnDir_Click);
@@ -294,13 +394,15 @@ namespace Annotation_Tool {
 			this->btnOpen->Dock = System::Windows::Forms::DockStyle::Top;
 			this->btnOpen->FlatAppearance->BorderSize = 0;
 			this->btnOpen->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnOpen->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->btnOpen->ForeColor = System::Drawing::Color::Azure;
 			this->btnOpen->Location = System::Drawing::Point(0, 0);
 			this->btnOpen->Name = L"btnOpen";
 			this->btnOpen->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
-			this->btnOpen->Size = System::Drawing::Size(151, 41);
+			this->btnOpen->Size = System::Drawing::Size(134, 41);
 			this->btnOpen->TabIndex = 0;
-			this->btnOpen->Text = L"Open";
+			this->btnOpen->Text = L"Image";
 			this->btnOpen->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btnOpen->UseVisualStyleBackColor = true;
 			this->btnOpen->Click += gcnew System::EventHandler(this, &MyForm::btnOpen_Click);
@@ -314,9 +416,9 @@ namespace Annotation_Tool {
 			this->btnFile->Location = System::Drawing::Point(0, 153);
 			this->btnFile->Name = L"btnFile";
 			this->btnFile->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
-			this->btnFile->Size = System::Drawing::Size(151, 60);
+			this->btnFile->Size = System::Drawing::Size(134, 60);
 			this->btnFile->TabIndex = 0;
-			this->btnFile->Text = L"File";
+			this->btnFile->Text = L"Open";
 			this->btnFile->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btnFile->UseVisualStyleBackColor = true;
 			this->btnFile->Click += gcnew System::EventHandler(this, &MyForm::btnFile_Click);
@@ -328,7 +430,7 @@ namespace Annotation_Tool {
 			this->panelLogo->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panelLogo->Location = System::Drawing::Point(0, 0);
 			this->panelLogo->Name = L"panelLogo";
-			this->panelLogo->Size = System::Drawing::Size(151, 153);
+			this->panelLogo->Size = System::Drawing::Size(134, 153);
 			this->panelLogo->TabIndex = 0;
 			// 
 			// panel1
@@ -414,7 +516,7 @@ namespace Annotation_Tool {
 			this->panel4->Controls->Add(this->label_Filelist);
 			this->panel4->Controls->Add(this->listBox_FL);
 			this->panel4->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panel4->Location = System::Drawing::Point(0, 412);
+			this->panel4->Location = System::Drawing::Point(0, 400);
 			this->panel4->Name = L"panel4";
 			this->panel4->Size = System::Drawing::Size(235, 251);
 			this->panel4->TabIndex = 21;
@@ -431,13 +533,14 @@ namespace Annotation_Tool {
 			// 
 			// listBox_FL
 			// 
+			this->listBox_FL->BackColor = System::Drawing::Color::WhiteSmoke;
 			this->listBox_FL->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->listBox_FL->FormattingEnabled = true;
 			this->listBox_FL->HorizontalScrollbar = true;
-			this->listBox_FL->ItemHeight = 25;
-			this->listBox_FL->Location = System::Drawing::Point(0, 22);
+			this->listBox_FL->ItemHeight = 16;
+			this->listBox_FL->Location = System::Drawing::Point(0, 23);
 			this->listBox_FL->Name = L"listBox_FL";
-			this->listBox_FL->Size = System::Drawing::Size(235, 229);
+			this->listBox_FL->Size = System::Drawing::Size(235, 228);
 			this->listBox_FL->TabIndex = 18;
 			// 
 			// panel3
@@ -445,17 +548,18 @@ namespace Annotation_Tool {
 			this->panel3->Controls->Add(this->txt_class);
 			this->panel3->Controls->Add(this->btn_Add_Class);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panel3->Location = System::Drawing::Point(0, 382);
+			this->panel3->Location = System::Drawing::Point(0, 370);
 			this->panel3->Name = L"panel3";
 			this->panel3->Size = System::Drawing::Size(235, 30);
 			this->panel3->TabIndex = 20;
 			// 
 			// txt_class
 			// 
+			this->txt_class->BackColor = System::Drawing::Color::WhiteSmoke;
 			this->txt_class->Dock = System::Windows::Forms::DockStyle::Left;
 			this->txt_class->Location = System::Drawing::Point(0, 0);
 			this->txt_class->Name = L"txt_class";
-			this->txt_class->Size = System::Drawing::Size(142, 30);
+			this->txt_class->Size = System::Drawing::Size(142, 23);
 			this->txt_class->TabIndex = 20;
 			// 
 			// btn_Add_Class
@@ -474,19 +578,20 @@ namespace Annotation_Tool {
 			// 
 			// listBox_label
 			// 
+			this->listBox_label->BackColor = System::Drawing::Color::WhiteSmoke;
 			this->listBox_label->Dock = System::Windows::Forms::DockStyle::Top;
 			this->listBox_label->FormattingEnabled = true;
-			this->listBox_label->ItemHeight = 25;
-			this->listBox_label->Location = System::Drawing::Point(0, 228);
+			this->listBox_label->ItemHeight = 16;
+			this->listBox_label->Location = System::Drawing::Point(0, 222);
 			this->listBox_label->Name = L"listBox_label";
-			this->listBox_label->Size = System::Drawing::Size(235, 154);
+			this->listBox_label->Size = System::Drawing::Size(235, 148);
 			this->listBox_label->TabIndex = 16;
 			this->listBox_label->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::listBox_label_MouseUp);
 			// 
 			// label_class
 			// 
 			this->label_class->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label_class->Location = System::Drawing::Point(0, 191);
+			this->label_class->Location = System::Drawing::Point(0, 185);
 			this->label_class->Name = L"label_class";
 			this->label_class->Size = System::Drawing::Size(235, 37);
 			this->label_class->TabIndex = 15;
@@ -495,12 +600,13 @@ namespace Annotation_Tool {
 			// 
 			// listBox_BB
 			// 
+			this->listBox_BB->BackColor = System::Drawing::Color::WhiteSmoke;
 			this->listBox_BB->Dock = System::Windows::Forms::DockStyle::Top;
 			this->listBox_BB->FormattingEnabled = true;
-			this->listBox_BB->ItemHeight = 25;
+			this->listBox_BB->ItemHeight = 16;
 			this->listBox_BB->Location = System::Drawing::Point(0, 37);
 			this->listBox_BB->Name = L"listBox_BB";
-			this->listBox_BB->Size = System::Drawing::Size(235, 154);
+			this->listBox_BB->Size = System::Drawing::Size(235, 148);
 			this->listBox_BB->TabIndex = 14;
 			this->listBox_BB->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::listBox_BB_MouseClick);
 			this->listBox_BB->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::listBox_BB_MouseUp);
@@ -530,11 +636,12 @@ namespace Annotation_Tool {
 			// 
 			// listBox_classes
 			// 
+			this->listBox_classes->BackColor = System::Drawing::Color::WhiteSmoke;
 			this->listBox_classes->FormattingEnabled = true;
-			this->listBox_classes->ItemHeight = 25;
+			this->listBox_classes->ItemHeight = 16;
 			this->listBox_classes->Location = System::Drawing::Point(352, 254);
 			this->listBox_classes->Name = L"listBox_classes";
-			this->listBox_classes->Size = System::Drawing::Size(120, 79);
+			this->listBox_classes->Size = System::Drawing::Size(120, 68);
 			this->listBox_classes->TabIndex = 4;
 			this->listBox_classes->Visible = false;
 			this->listBox_classes->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listBox_classes_SelectedIndexChanged);
@@ -564,12 +671,12 @@ namespace Annotation_Tool {
 			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
 			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->deleteToolStripMenuItem });
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(133, 34);
+			this->contextMenuStrip1->Size = System::Drawing::Size(107, 26);
 			// 
 			// deleteToolStripMenuItem
 			// 
 			this->deleteToolStripMenuItem->Name = L"deleteToolStripMenuItem";
-			this->deleteToolStripMenuItem->Size = System::Drawing::Size(132, 30);
+			this->deleteToolStripMenuItem->Size = System::Drawing::Size(106, 22);
 			this->deleteToolStripMenuItem->Text = L"delete";
 			this->deleteToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::deleteToolStripMenuItem_Click);
 			// 
@@ -578,34 +685,18 @@ namespace Annotation_Tool {
 			this->contextMenuStrip2->ImageScalingSize = System::Drawing::Size(24, 24);
 			this->contextMenuStrip2->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->deleteToolStripMenuItem1 });
 			this->contextMenuStrip2->Name = L"contextMenuStrip2";
-			this->contextMenuStrip2->Size = System::Drawing::Size(133, 34);
+			this->contextMenuStrip2->Size = System::Drawing::Size(107, 26);
 			// 
 			// deleteToolStripMenuItem1
 			// 
 			this->deleteToolStripMenuItem1->Name = L"deleteToolStripMenuItem1";
-			this->deleteToolStripMenuItem1->Size = System::Drawing::Size(132, 30);
+			this->deleteToolStripMenuItem1->Size = System::Drawing::Size(106, 22);
 			this->deleteToolStripMenuItem1->Text = L"delete";
 			this->deleteToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MyForm::deleteToolStripMenuItem1_Click);
 			// 
-			// btnRead
-			// 
-			this->btnRead->Dock = System::Windows::Forms::DockStyle::Top;
-			this->btnRead->FlatAppearance->BorderSize = 0;
-			this->btnRead->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnRead->ForeColor = System::Drawing::Color::Azure;
-			this->btnRead->Location = System::Drawing::Point(0, 82);
-			this->btnRead->Name = L"btnRead";
-			this->btnRead->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
-			this->btnRead->Size = System::Drawing::Size(151, 41);
-			this->btnRead->TabIndex = 2;
-			this->btnRead->Text = L"Read Files";
-			this->btnRead->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnRead->UseVisualStyleBackColor = true;
-			this->btnRead->Click += gcnew System::EventHandler(this, &MyForm::btnRead_Click);
-			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1097, 672);
 			this->Controls->Add(this->panel_Picture_Box);
@@ -619,6 +710,7 @@ namespace Annotation_Tool {
 			this->Name = L"MyForm";
 			this->Text = L"Annotation Tool";
 			this->panelSideMenu->ResumeLayout(false);
+			this->panelGenerate->ResumeLayout(false);
 			this->panelFileSubMenu->ResumeLayout(false);
 			this->panel1->ResumeLayout(false);
 			this->panel2->ResumeLayout(false);
@@ -638,6 +730,284 @@ namespace Annotation_Tool {
 
 #pragma endregion
 
+#pragma region center_PictureBox
+	private:
+		//Member Data
+		//All Files BoundBoxes Info
+		Box **Images_Bound_Boxes;
+		array<int>^ Images_BB_no;
+
+		//Bound Boxes
+		Box *Bound_Boxes;	//Current Image displayed Boundbox
+		int no_Bound_Boxes;	//Current Image no of Boundboxes
+
+		//Selected Box
+		Box *selectedBox = 0;
+		int selected_box_index;
+
+		//Labels
+		List<String^>^ labels;
+
+		//Mouse
+		Point MouseDown_point;
+		Point current_point;
+		bool leftMouseButtonIsDown;
+
+		//colors
+		array<Color> ^color;
+
+		msclr::interop::marshal_context ^ context;
+
+		//initializing member data
+		void initialize_Data() {
+			no_Bound_Boxes = 0;
+
+			selectedBox = 0;
+			selected_box_index = -1;
+
+			labels = gcnew List<String^>();
+
+			color = gcnew array<Color>(10);
+			color[0] = Color::Red; color[1] = Color::Green; color[2] = Color::Blue; color[3] = Color::Brown; color[4] = Color::Cyan;
+			color[5] = Color::Yellow; color[6] = Color::Indigo; color[7] = Color::Purple; color[8] = Color::Firebrick;
+
+			context = gcnew msclr::interop::marshal_context();
+		}
+
+		//Method for adding a new box
+		void Add_Box(Box newbox) {
+			Box *temp;
+			temp = Bound_Boxes;
+			no_Bound_Boxes++;
+			Bound_Boxes = new Box[no_Bound_Boxes];
+
+			//adding old elements
+			for (int i = 0; i < no_Bound_Boxes - 1; i++) {
+				Bound_Boxes[i].x = temp[i].x;
+				Bound_Boxes[i].y = temp[i].y;
+				Bound_Boxes[i].width = temp[i].width;
+				Bound_Boxes[i].height = temp[i].height;
+				Bound_Boxes[i].label = temp[i].label;
+			}
+
+			//adding new box
+			Bound_Boxes[no_Bound_Boxes - 1].x = newbox.x;
+			Bound_Boxes[no_Bound_Boxes - 1].y = newbox.y;
+			Bound_Boxes[no_Bound_Boxes - 1].width = newbox.width;
+			Bound_Boxes[no_Bound_Boxes - 1].height = newbox.height;
+			Bound_Boxes[no_Bound_Boxes - 1].label = newbox.label;
+
+			if (image_index >= 0) {
+				Images_Bound_Boxes[image_index] = Bound_Boxes;
+				Images_BB_no[image_index] = no_Bound_Boxes;
+				update_Listbox_BB();
+			}
+			
+			selectedBox = 0;
+			
+		}
+
+		//Method for deleting selected box
+		void Delete_Box() {
+			Box *temp;
+			temp = Bound_Boxes;
+			Bound_Boxes = new Box[no_Bound_Boxes - 1];
+
+			//adding old elements
+			int c = 0;
+			for (int i = 0; i < no_Bound_Boxes; i++) {
+				if (i != selected_box_index) {
+					Bound_Boxes[c].x = temp[i].x;
+					Bound_Boxes[c].y = temp[i].y;
+					Bound_Boxes[c].width = temp[i].width;
+					Bound_Boxes[c].height = temp[i].height;
+					Bound_Boxes[c].label = temp[i].label;
+					c++;
+				}
+			}
+			no_Bound_Boxes--;
+			Images_Bound_Boxes[image_index] = Bound_Boxes;
+			Images_BB_no[image_index] = no_Bound_Boxes;
+
+			selectedBox = 0;
+			update_Listbox_BB();
+			pictureBox1->Invalidate();
+		}
+
+		//editing picture box right-click menu
+		void view_option(Point p) {
+			listBox_classes->Location = Point(pictureBox1->PointToScreen(p).X - 10, pictureBox1->PointToScreen(p).Y - 10);
+			listBox_classes->Items->Clear();
+			listBox_classes->Items->AddRange(labels->ToArray());
+			listBox_classes->Items->Add("Delete Box");
+			listBox_classes->Visible = true;
+		}
+
+		//updating bound boxes listbox
+		void update_Listbox_BB() {
+			listBox_BB->Items->Clear();
+			Bound_Boxes = Images_Bound_Boxes[image_index];
+			no_Bound_Boxes=Images_BB_no[image_index];
+			for (int i = 0; i < no_Bound_Boxes; i++) {
+				String ^class_name;
+				if (Bound_Boxes[i].label >= 0 && Bound_Boxes[i].label < labels->ToArray()->Length) class_name = gcnew String(labels[Bound_Boxes[i].label]);
+				else class_name = Bound_Boxes[i].label.ToString();
+
+				listBox_BB->Items->Add("(" + Bound_Boxes[i].x + ", " + Bound_Boxes[i].y + ", " + Bound_Boxes[i].width + ", " + Bound_Boxes[i].height + ")" + " - " + class_name);
+			}
+		}
+
+		//Painting Picturebox Method
+		System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+			if (files == nullptr)	pictureBox1->Size = panel_Picture_Box->Size; //If no image
+
+			Graphics ^graphics = e->Graphics;
+			//Draing cross x-y
+			Pen ^pen = gcnew Pen(Color::Black);
+			graphics->DrawLine(pen, current_point.X, 0, current_point.X, pictureBox1->Height);
+			graphics->DrawLine(pen, 0, current_point.Y, pictureBox1->Width, current_point.Y);
+
+			//Drawing Bound Boxes
+			if (image_index >= 0) {		//Current boundboxes to display
+				Bound_Boxes = Images_Bound_Boxes[image_index];
+				no_Bound_Boxes = Images_BB_no[image_index];
+			}
+
+			for (int i = 0; i < no_Bound_Boxes; i++) {
+				if (Bound_Boxes[i].label>=0) pen = gcnew Pen(color[Bound_Boxes[i].label]);
+				else pen = gcnew Pen(Color::Black);
+
+				graphics->DrawRectangle(pen, (int)Bound_Boxes[i].x, (int)Bound_Boxes[i].y,
+					Bound_Boxes[i].width, Bound_Boxes[i].height);
+			}
+
+			//Drawing Current Bound Box
+			pen = gcnew Pen(Color::Black);
+			if (leftMouseButtonIsDown) {
+				graphics->DrawRectangle(pen, Math::Min(MouseDown_point.X, current_point.X),
+					Math::Min(MouseDown_point.Y, current_point.Y),
+					Math::Abs(MouseDown_point.X - current_point.X),
+					Math::Abs(MouseDown_point.Y - current_point.Y));
+			}
+
+			
+			//update_Listbox_BB();
+
+			//Selecting Bound Box
+			if (selectedBox != 0) {
+				SolidBrush ^brush = gcnew SolidBrush(Color::FromArgb(30, 0, 255, 0));
+				graphics->FillRectangle(brush, (int)selectedBox->x, (int)selectedBox->y, selectedBox->width, selectedBox->height);
+			}
+
+		}
+
+		//On Mouse Down
+		System::Void pictureBox1_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+			if (e->Button != System::Windows::Forms::MouseButtons::Left) {	//On right-click, select box
+				int i;
+				for (i = 0; i < no_Bound_Boxes; i++) {
+					if ((e->X >= Bound_Boxes[i].x && e->X <= Bound_Boxes[i].x + Bound_Boxes[i].width) &&
+						(e->Y >= Bound_Boxes[i].y && e->Y <= Bound_Boxes[i].y + Bound_Boxes[i].height)) {
+						break;
+					}
+				}
+
+				if (i != no_Bound_Boxes) {	//when box is right clicked
+					selectedBox = &Bound_Boxes[i];
+					selected_box_index = i;
+					pictureBox1->Invalidate();
+					view_option(e->Location); //viewing class options
+				}
+				else { //when box not right clicked
+					selectedBox = 0;
+					selected_box_index = -1;
+					listBox_classes->Visible = false;
+				}
+
+				return;
+			}
+
+			//On Left-Click
+			leftMouseButtonIsDown = true;
+			MouseDown_point = current_point = e->Location;
+			pictureBox1->Invalidate();
+		}
+
+		//On Mouse Up
+		System::Void pictureBox1_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+			if (e->Button != System::Windows::Forms::MouseButtons::Left) return; //if not left-click
+
+			//If left click
+			//Bound box is drawn
+			if (current_point != MouseDown_point) {
+				int x = Math::Min(MouseDown_point.X, current_point.X);
+				int y = Math::Min(MouseDown_point.Y, current_point.Y);
+
+				//checking constraints x and y
+				if (x < 0) x = 0;
+				if (y < 0) y = 0;
+
+				double width = Math::Abs(MouseDown_point.X - current_point.X);
+				double height = Math::Abs(MouseDown_point.Y - current_point.Y);
+
+				//checking constraints width and height
+				if (x + width > pictureBox1->Width) width = pictureBox1->Width - x;
+				if (y + height > pictureBox1->Height) height = pictureBox1->Height - y;
+
+				Box new_Box = { x, y, width, height, -1};
+				Add_Box(new_Box); //Adding new box
+				selectedBox = &Bound_Boxes[no_Bound_Boxes - 1];
+				selected_box_index = no_Bound_Boxes - 1;
+				view_option(MouseDown_point);
+			}
+			else {	//Boundbox is selected
+				for (int i = 0; i < no_Bound_Boxes; i++) {
+					if ((e->X >= Bound_Boxes[i].x && e->X <= Bound_Boxes[i].x + Bound_Boxes[i].width) &&
+						(e->Y >= Bound_Boxes[i].y && e->Y <= Bound_Boxes[i].y + Bound_Boxes[i].height)) {
+						selectedBox = &Bound_Boxes[i];
+						selected_box_index = i;
+						break;
+					}
+				}
+			}
+
+			leftMouseButtonIsDown = false;
+			pictureBox1->Invalidate();
+		}
+
+		//When mouse is moved
+		System::Void pictureBox1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+			current_point = e->Location;
+			pictureBox1->Invalidate();
+		}
+
+		//When mouse enters picturebox
+		System::Void pictureBox1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+			pictureBox1->Cursor = Cursors::Cross;
+		}
+
+		//When mouse leaves picturebox
+		System::Void pictureBox1_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+			pictureBox1->Cursor = Cursors::Default;
+		}
+
+		//Picture Box Right-click Menu for selecting class of bound box or for deleting a boundbox
+		System::Void listBox_classes_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+			if (listBox_classes->SelectedIndex != -1) {	//if a class is selected
+				if (listBox_classes->SelectedIndex != listBox_classes->Items->Count - 1) {	//if not delete
+					Bound_Boxes[selected_box_index].label = listBox_classes->SelectedIndex;
+				}
+				else { //if delete box
+					Delete_Box();
+				}
+
+			}
+			update_Listbox_BB();
+			listBox_classes->Visible = false;
+		}
+
+#pragma endregion 
+
 #pragma region left_menu
 	private:
 		//Left Menu Member data
@@ -648,6 +1018,7 @@ namespace Annotation_Tool {
 		//Method for hiding left Menu
 		void hide_Left_Panels() {
 			if (panelFileSubMenu->Visible) panelFileSubMenu->Visible = false;
+			if (panelGenerate->Visible) panelGenerate->Visible = false;
 		}
 
 		//Method for displaying left Menu
@@ -668,11 +1039,18 @@ namespace Annotation_Tool {
 
 		//Method for loading an image
 		System::Void btnOpen_Click(System::Object^  sender, System::EventArgs^  e) {
-			if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-				pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
+			if (openFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::OK) {
+				MessageBox::Show("No file selected");
+				return;
 			}
 
+			pictureBox1->Image = Image::FromFile(openFileDialog1->FileName);
 			files = gcnew array<String^>{openFileDialog1->FileName};
+
+			Images_Bound_Boxes = new Box*[files->Length];
+			Images_BB_no= gcnew array<int>(files->Length);
+
+			clear();
 			image_index = 0;
 			is_read = false;
 
@@ -690,10 +1068,13 @@ namespace Annotation_Tool {
 				files = System::IO::Directory::GetFiles(folderBrowserDialog1->SelectedPath);
 			}
 
-			if (files->Length == 0) {
-				MessageBox::Show("No file");
+			if (files==nullptr) {
+				MessageBox::Show("No directory selected");
 				return;
 			}
+
+			Images_Bound_Boxes = new Box*[files->Length];
+			Images_BB_no = gcnew array<int>(files->Length);
 
 			listBox_FL->Items->Clear();
 			for (int i = 0; i < files->Length; i++) {
@@ -705,40 +1086,214 @@ namespace Annotation_Tool {
 			is_read = false;
 			pictureBox1->Image = Image::FromFile(files[image_index]);
 			listBox_FL->SetSelected(image_index, true);
-			
+
 			hide_Left_Panels();
 		}
 
 		//Display Next Image
 		System::Void btnNext_Click(System::Object^  sender, System::EventArgs^  e) {
 			if (image_index==-1) return;
-			is_read? image_index+=2:image_index++;
-			if (image_index >= files->Length) image_index = 0;
+
+			save_current_image();	//Automatic save
+
+			image_index++;
+			if (image_index >= Images_BB_no->Length) image_index = 0;
 
 			clear();
-			pictureBox1->Image = Image::FromFile(files[image_index]);
-			listBox_FL->SetSelected(image_index, true);
+			
+			if (!is_read) {
+				listBox_FL->SetSelected(image_index, true);
+				pictureBox1->Image = Image::FromFile(files[image_index]);
+			}
+			else {
+				listBox_FL->SetSelected(2 * image_index, true);
+				pictureBox1->Image = Image::FromFile(files[(2 * image_index)]);
+			}
 
-			//if(is_read) this->Bound_Boxes = Load_Bound_Boxes(files[image_index + 1]);
+			update_Listbox_BB();
 		}
 
 		//Display Previous Image
 		System::Void btnPrev_Click(System::Object^  sender, System::EventArgs^  e) {
 			if (image_index == -1) return;
-			is_read ? image_index -= 2 : image_index--;
-			if (image_index <= -1) image_index = is_read ? files->Length - 2 : files->Length - 1; ;
+
+			save_current_image();	//Automatic save
+
+			image_index--;
+			if (image_index <= -1) image_index = Images_BB_no->Length-1;
 
 			clear();
-			pictureBox1->Image = Image::FromFile(files[image_index]);
+			if (!is_read) {
+				listBox_FL->SetSelected(image_index, true);
+				pictureBox1->Image = Image::FromFile(files[image_index]);
+			}
+			else {
+				listBox_FL->SetSelected(2 * image_index, true);
+				pictureBox1->Image = Image::FromFile(files[(2 * image_index)]);
+			}
+
+			update_Listbox_BB();
+		}
+		
+		//Recheck/Cross Check Function
+		void save_current_image() {	
+			Images_Bound_Boxes[image_index] = Bound_Boxes;
+			Images_BB_no[image_index] = no_Bound_Boxes;
+
+			String^ filename;
+			if (!is_read) filename = files[image_index];
+			else filename = files[(2*image_index)];
+
+			String^ pics = "files/" + System::IO::Path::GetFileName(filename);
+			System::IO::File::Copy(filename, pics, true);
+
+			String^ fname = System::IO::Path::GetFileNameWithoutExtension(filename);
+			fname = "files/" + fname + ".txt";
+
+			StreamWriter^ sw = gcnew StreamWriter(fname, false);
+			sw->WriteLine(pictureBox1->Width + " " + pictureBox1->Height);
+
+			int no_labels = labels->ToArray()->Length;
+
+			for (int i = 0; i < no_Bound_Boxes; i++) {
+				sw->WriteLine(Bound_Boxes[i].x.ToString() + " " +
+							Bound_Boxes[i].y.ToString() + " " +
+							Bound_Boxes[i].width.ToString() + " " +
+							Bound_Boxes[i].height.ToString() + " " +
+							Bound_Boxes[i].label.ToString()
+				);
+			}
+			sw->Close();
+
+		}
+
+		//Save Method-Save Bound boxes data in file using YOLO Format
+		System::Void btnSave_Click(System::Object^  sender, System::EventArgs^  e) {
+			if (files == nullptr) {
+				MessageBox::Show("No Image");
+				return;
+			}
+			save_current_image();
+			MessageBox::Show("Saved");
+		}
+
+		//Loading boundboxes from annotation file
+		void Load_Bound_Boxes(String ^filename) {
+			FILE *file = fopen(context->marshal_as<const char*>(filename->ToString()), "r");
+			if (!file) {
+				MessageBox::Show("Boundbox file box doesnot exist");
+				return;
+			}
+			int x, y, h, w, width, height, label_index;
+
+			fscanf(file, "%d %d", &width, &height);
+			if (Bound_Boxes != NULL) {
+				Bound_Boxes=NULL;
+				no_Bound_Boxes = 0;
+			}
+			while (fscanf(file, "%d %d %d %d %d", &x, &y, &w, &h, &label_index) == 5) {
+				Box new_box = { x, y, w, h, label_index };
+				Add_Box(new_box);
+			}
+			fclose(file);
+		}
+
+		//Reading Annotated Files
+		System::Void btnRead_Click(System::Object^  sender, System::EventArgs^  e) {
+			System::IO::DirectoryInfo^ info = gcnew System::IO::DirectoryInfo(System::IO::Directory::GetCurrentDirectory());
+			if (folderBrowserDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				files = System::IO::Directory::GetFiles(folderBrowserDialog1->SelectedPath); //only txt
+			}
+
+			if (files == nullptr) {
+				MessageBox::Show("No directory selected");
+				return;
+			}
+
+			Images_Bound_Boxes = new Box*[files->Length/2];
+			Images_BB_no = gcnew array<int>(files->Length/2);
+
+			listBox_FL->Items->Clear();
+			for (int i = 0; i < files->Length; i++) {
+				listBox_FL->Items->Add(files[i]->ToString());
+			}
+
+			clear();
+			image_index = 0;
+			is_read = true;
+
+			pictureBox1->Image = Image::FromFile(files[2*image_index]);
+			for (int i = 0; i < files->Length/2; i++) {
+				image_index = i;
+				Load_Bound_Boxes(files[(2*i)+1]);
+			}
+
+			image_index = 0;
 			listBox_FL->SetSelected(image_index, true);
-
-			//if (is_read) this->Bound_Boxes = Load_Bound_Boxes(files[image_index + 1]);
+			update_Listbox_BB();
 		}
 
-		//Clear Button
-		System::Void btn_Clear_Click(System::Object^  sender, System::EventArgs^  e) {
-			clear();
+		//Read Classes
+		System::Void btn_Class_Click(System::Object^  sender, System::EventArgs^  e) {
+			if (openFileDialog1->ShowDialog() != System::Windows::Forms::DialogResult::OK) {
+				return;
+			}
+
+			labels->Clear();
+			String^ class_name;
+			StreamReader^ din = File::OpenText(openFileDialog1->FileName);
+			while ((class_name = din->ReadLine()) != nullptr)
+			{
+				labels->Add(class_name);
+			}
+
+			listBox_label->Items->Clear();
+			listBox_label->Items->AddRange(labels->ToArray());
 		}
+
+		System::Void btn_Generate_Click(System::Object^  sender, System::EventArgs^  e) {
+			show_left_Panel(panelGenerate);
+		}
+
+		//Generating Yolo Files
+		void convert_to_YOLO_Format() {
+			String^ filename;
+			if (!is_read) filename = files[image_index];
+			else filename = files[(2 * image_index)];
+
+			String^ pics = "files_YOLO/" + System::IO::Path::GetFileName(filename);
+			System::IO::File::Copy(filename, pics, true);
+
+			String^ fname = System::IO::Path::GetFileNameWithoutExtension(filename);
+			fname = "files_YOLO/" + fname + ".txt";
+
+			StreamWriter^ sw = gcnew StreamWriter(fname, false);
+
+			int no_labels = labels->ToArray()->Length;
+			int img_width = pictureBox1->Width;
+			int img_height = pictureBox1->Height;
+
+			for (int i = 0; i < Images_BB_no[image_index]; i++) {
+				sw->WriteLine(Images_Bound_Boxes[image_index][i].label.ToString() + " " +
+					(Images_Bound_Boxes[image_index][i].x / img_width).ToString() + " " +
+					(Images_Bound_Boxes[image_index][i].y / img_height).ToString() + " " +
+					(Images_Bound_Boxes[image_index][i].width / img_width).ToString() + " " +
+					(Images_Bound_Boxes[image_index][i].height / img_height).ToString()
+				);
+			}
+			sw->Close();
+		}
+
+		System::Void btnYOLO_Click(System::Object^  sender, System::EventArgs^  e) {
+			int temp = image_index;
+			for (image_index = 0; image_index < Images_BB_no->Length; image_index++) {
+				convert_to_YOLO_Format();
+			}
+			image_index = temp;
+			MessageBox::Show("Saved YOLO Format of all annotated files in file list");
+		}
+		
 
 		//Clear Member Data Method
 		void clear() {
@@ -751,69 +1306,9 @@ namespace Annotation_Tool {
 			pictureBox1->Invalidate();
 		}
 
-		//Save Method-Save Bound boxes data in file using YOLO Format
-		System::Void btnSave_Click(System::Object^  sender, System::EventArgs^  e) {
-			String^ pics = "files/" + System::IO::Path::GetFileName(files[image_index]);
-			System::IO::File::Copy(files[image_index], pics);
-
-			String^ fname = System::IO::Path::GetFileNameWithoutExtension(files[image_index]);
-			fname = "files/" + fname + ".txt";
-
-			StreamWriter^ sw = gcnew StreamWriter(fname);
-			sw->WriteLine(pictureBox1->Width + " " + pictureBox1->Height);
-
-			int no_labels = labels->ToArray()->Length;
-			for (int i = 0; i < no_Bound_Boxes; i++) {
-				int label_id, j;
-				for (j = 0; j < no_labels; j++) {
-					if (labels[j] == gcnew String(Bound_Boxes[i].label.c_str())) {
-						label_id = j;
-						break;
-					}
-				}
-				if (j == no_labels) label_id = -1; //if no label
-
-				sw->WriteLine(Bound_Boxes[i].x.ToString() + " " +
-					Bound_Boxes[i].y.ToString() + " " +
-					Bound_Boxes[i].width.ToString() + " " +
-					Bound_Boxes[i].height.ToString() + " " + label_id
-				);
-			}
-			sw->Close();
-			MessageBox::Show("Saved");
-		}
-
-		//Loading boundboxes from annotated file
-		void Load_Bound_Boxes() {
-
-		}
-
-		//Reading Annotated Files
-		System::Void btnRead_Click(System::Object^  sender, System::EventArgs^  e) {
-			System::IO::DirectoryInfo^ info = gcnew System::IO::DirectoryInfo(System::IO::Directory::GetCurrentDirectory());
-			if (folderBrowserDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-			{
-				files = System::IO::Directory::GetFiles(folderBrowserDialog1->SelectedPath); //only txt
-			}
-
-			if (files->Length == 0) {
-				MessageBox::Show("No file");
-				return;
-			}
-
-			listBox_FL->Items->Clear();
-			for (int i = 0; i < files->Length; i++) {
-				listBox_FL->Items->Add(files[i]->ToString());
-			}
-
+		//Clear Button
+		System::Void btn_Clear_Click(System::Object^  sender, System::EventArgs^  e) {
 			clear();
-			image_index = 0;
-			is_read = true;
-
-			pictureBox1->Image = Image::FromFile(files[image_index]);
-			listBox_FL->SetSelected(image_index, true);
-
-			//this->Bound_Boxes = Load_Bound_Boxes(files[image_index + 1]);
 		}
 
 
@@ -898,242 +1393,8 @@ namespace Annotation_Tool {
 
 #pragma endregion 
 
-#pragma region center_PictureBox
-	private:
-		//Member Data
-		//Bound Boxes
-		Box *Bound_Boxes;
-		int no_Bound_Boxes;
 
-		//Selected Box
-		Box *selectedBox=0;
-		int selected_box_index;
 
-		//Labels
-		List<String^>^ labels;
-
-		//Mouse
-		Point MouseDown_point;
-		Point current_point;
-		bool leftMouseButtonIsDown;
-
-		//initiializing member data
-		void initialize_Data() {
-			no_Bound_Boxes = 0;
-
-			selectedBox = 0;
-			selected_box_index = -1;
-
-			labels= gcnew List<String^>();
-		}
-
-		//Method for adding a new box
-		void Add_Box(Box newbox) {
-			Box *temp;
-			temp = Bound_Boxes;
-			no_Bound_Boxes++;
-			Bound_Boxes = new Box[no_Bound_Boxes];
-
-			//adding old elements
-			for (int i = 0; i < no_Bound_Boxes - 1; i++) {
-				Bound_Boxes[i].x = temp[i].x;
-				Bound_Boxes[i].y = temp[i].y;
-				Bound_Boxes[i].width = temp[i].width;
-				Bound_Boxes[i].height = temp[i].height;
-				Bound_Boxes[i].label = temp[i].label;
-			}
-
-			//adding new box
-			Bound_Boxes[no_Bound_Boxes - 1].x=newbox.x;
-			Bound_Boxes[no_Bound_Boxes - 1].y = newbox.y;
-			Bound_Boxes[no_Bound_Boxes - 1].width = newbox.width;
-			Bound_Boxes[no_Bound_Boxes - 1].height = newbox.height;
-			Bound_Boxes[no_Bound_Boxes - 1].label = newbox.label;
-
-			selectedBox = 0;
-			update_Listbox_BB();
-		}
-
-		//Method for deleting selected box
-		void Delete_Box() {
-			Box *temp;
-			temp = Bound_Boxes;
-			Bound_Boxes = new Box[no_Bound_Boxes-1];
-
-			//adding old elements
-			int c = 0;
-			for (int i = 0; i < no_Bound_Boxes; i++) {
-				if (i != selected_box_index) {
-					Bound_Boxes[c].x = temp[i].x;
-					Bound_Boxes[c].y = temp[i].y;
-					Bound_Boxes[c].width = temp[i].width;
-					Bound_Boxes[c].height = temp[i].height;
-					Bound_Boxes[c].label = temp[i].label;
-					c++;
-				}
-			}
-			no_Bound_Boxes--;
-			selectedBox = 0;
-			update_Listbox_BB();
-			pictureBox1->Invalidate();
-		}
-
-		//editing picture box right-click menu
-		void view_option(Point p) {
-			listBox_classes->Location = Point(pictureBox1->PointToScreen(p).X - 10, pictureBox1->PointToScreen(p).Y - 10);
-			listBox_classes->Items->Clear();
-			listBox_classes->Items->AddRange(labels->ToArray());
-			listBox_classes->Items->Add("Delete Box");
-			listBox_classes->Visible = true;
-		}
-
-		//updating bound boxes listbox
-		void update_Listbox_BB() {
-			listBox_BB->Items->Clear();
-			for (int i = 0; i < no_Bound_Boxes; i++) {
-				listBox_BB->Items->Add("(" + Bound_Boxes[i].x + ", " + Bound_Boxes[i].y + ", " + Bound_Boxes[i].width + ", " + Bound_Boxes[i].height + ")" + " - " + gcnew String(Bound_Boxes[i].label.c_str()));
-			}
-		}
-		
-		//Painting Picturebox Method
-		System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-			Graphics ^graphics = e->Graphics;
-
-			//Draing cross x-y
-			Pen ^pen = gcnew Pen(Color::Black);
-			graphics->DrawLine(pen, current_point.X, 0, current_point.X, pictureBox1->Height);
-			graphics->DrawLine(pen, 0, current_point.Y, pictureBox1->Width, current_point.Y);
-
-			//Drawing Current Bound Box
-			pen = gcnew Pen(Color::Red);
-			if (leftMouseButtonIsDown) {
-				graphics->DrawRectangle(pen, Math::Min(MouseDown_point.X, current_point.X),
-										Math::Min(MouseDown_point.Y, current_point.Y),
-										Math::Abs(MouseDown_point.X - current_point.X),
-										Math::Abs(MouseDown_point.Y - current_point.Y));
-			}
-
-			//Drawing Bound Boxes
-			for (int i = 0; i < no_Bound_Boxes; i++) {
-				graphics->DrawRectangle(pen, (int)Bound_Boxes[i].x, (int)Bound_Boxes[i].y,
-										Bound_Boxes[i].width, Bound_Boxes[i].height);
-			}
-
-			//Selecting Bound Box
-			if (selectedBox != 0) {
-				SolidBrush ^brush = gcnew SolidBrush(Color::FromArgb(30, 0, 255, 0));
-				graphics->FillRectangle(brush, (int)selectedBox->x, (int)selectedBox->y, selectedBox->width, selectedBox->height);
-			}
-			
-		}
-
-		//On Mouse Down
-		System::Void pictureBox1_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-			if (e->Button != System::Windows::Forms::MouseButtons::Left) {	//On right-click, select box
-				int i;
-				for (i = 0; i < no_Bound_Boxes; i++) {
-					if ((e->X >= Bound_Boxes[i].x && e->X <= Bound_Boxes[i].x + Bound_Boxes[i].width) &&
-						(e->Y >= Bound_Boxes[i].y && e->Y <= Bound_Boxes[i].y + Bound_Boxes[i].height)) {
-						break;
-					}
-				}
-
-				if (i != no_Bound_Boxes) {	//when box is right clicked
-					selectedBox = &Bound_Boxes[i];
-					selected_box_index = i;
-					pictureBox1->Invalidate();
-					view_option(e->Location); //viewing class options
-				}
-				else { //when box not right clicked
-					selectedBox = 0;
-					selected_box_index = -1;
-					listBox_classes->Visible = false;
-				}
-				
-				return;
-			}
-
-			//On Left-Click
-			leftMouseButtonIsDown = true;
-			MouseDown_point =current_point = e->Location;
-			pictureBox1->Invalidate();
-		}
-
-		//On Mouse Up
-		System::Void pictureBox1_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-			if (e->Button != System::Windows::Forms::MouseButtons::Left) return; //if not left-click
-
-			//If left click
-			//Bound box is drawn
-			if (current_point != MouseDown_point) {
-				int x = Math::Min(MouseDown_point.X, current_point.X);
-				int y = Math::Min(MouseDown_point.Y, current_point.Y);
-
-				//checking constraints x and y
-				if (x < 0) x = 0;	
-				if (y < 0) y = 0;
-
-				double width = Math::Abs(MouseDown_point.X - current_point.X);
-				double height = Math::Abs(MouseDown_point.Y - current_point.Y);
-
-				//checking constraints width and height
-				if (x + width > pictureBox1->Width) width = pictureBox1->Width - x;
-				if (y + height > pictureBox1->Height) height = pictureBox1->Height - y;
-
-				Box new_Box = {x, y, width, height, "no_class" };
-				Add_Box(new_Box); //Adding new box
-				selectedBox = &Bound_Boxes[no_Bound_Boxes-1];
-				selected_box_index = no_Bound_Boxes - 1;
-				view_option(MouseDown_point);
-			}
-			else {	//Boundbox is selected
-				for (int i = 0; i < no_Bound_Boxes; i++) {
-					if ((e->X >= Bound_Boxes[i].x && e->X <= Bound_Boxes[i].x + Bound_Boxes[i].width) &&
-						(e->Y >= Bound_Boxes[i].y && e->Y <= Bound_Boxes[i].y + Bound_Boxes[i].height)) {
-						selectedBox = &Bound_Boxes[i];
-						selected_box_index = i;
-						break;
-					}
-				}
-			}
-
-			leftMouseButtonIsDown = false;
-			pictureBox1->Invalidate();
-		}
-		
-		//When mouse is moved
-		System::Void pictureBox1_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
-			current_point = e->Location;
-			pictureBox1->Invalidate();
-		}
-
-		//When mouse enters picturebox
-		System::Void pictureBox1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-			pictureBox1->Cursor = Cursors::Cross;
-		}
-
-		//When mouse leaves picturebox
-		System::Void pictureBox1_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-			pictureBox1->Cursor = Cursors::Default;
-		}
-
-		//Picture Box Right-click Menu for selecting class of bound box or for deleting a boundbox
-		System::Void listBox_classes_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-			if (listBox_classes->SelectedIndex != -1) {	//if a class is selected
-				if (listBox_classes->SelectedIndex != listBox_classes->Items->Count-1) {	//if not delete
-					msclr::interop::marshal_context ^ context = gcnew msclr::interop::marshal_context();
-					Bound_Boxes[selected_box_index].label = context->marshal_as<const char*>(listBox_classes->SelectedItem->ToString());
-				}
-				else { //if delete box
-					Delete_Box();
-				}
-				
-			}
-			update_Listbox_BB();
-			listBox_classes->Visible = false;
-		}
-		
-#pragma endregion 
 
 };
 }
