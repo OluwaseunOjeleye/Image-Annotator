@@ -19,7 +19,6 @@ namespace Annotation_Tool {
 	using namespace System::Drawing;
 	using namespace System::IO;
 
-
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
@@ -112,6 +111,7 @@ namespace Annotation_Tool {
 	private: System::Windows::Forms::Panel^  panelGenerate;
 	private: System::Windows::Forms::Button^  btnYOLO;
 	private: System::Windows::Forms::Button^  double_YOLO_btn;
+	private: System::Windows::Forms::Button^  btn_YOLO_Read;
 
 
 
@@ -144,12 +144,14 @@ namespace Annotation_Tool {
 			this->panelSideMenu = (gcnew System::Windows::Forms::Panel());
 			this->btn_Clear = (gcnew System::Windows::Forms::Button());
 			this->panelGenerate = (gcnew System::Windows::Forms::Panel());
+			this->double_YOLO_btn = (gcnew System::Windows::Forms::Button());
 			this->btnYOLO = (gcnew System::Windows::Forms::Button());
 			this->btn_Generate = (gcnew System::Windows::Forms::Button());
 			this->btnPrev = (gcnew System::Windows::Forms::Button());
 			this->btnNext = (gcnew System::Windows::Forms::Button());
 			this->btnSave = (gcnew System::Windows::Forms::Button());
 			this->panelFileSubMenu = (gcnew System::Windows::Forms::Panel());
+			this->btn_YOLO_Read = (gcnew System::Windows::Forms::Button());
 			this->btn_Class = (gcnew System::Windows::Forms::Button());
 			this->btnRead = (gcnew System::Windows::Forms::Button());
 			this->btnDir = (gcnew System::Windows::Forms::Button());
@@ -180,7 +182,6 @@ namespace Annotation_Tool {
 			this->deleteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contextMenuStrip2 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->deleteToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->double_YOLO_btn = (gcnew System::Windows::Forms::Button());
 			this->panelSideMenu->SuspendLayout();
 			this->panelGenerate->SuspendLayout();
 			this->panelFileSubMenu->SuspendLayout();
@@ -221,7 +222,7 @@ namespace Annotation_Tool {
 			this->btn_Clear->FlatAppearance->BorderSize = 0;
 			this->btn_Clear->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_Clear->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btn_Clear->Location = System::Drawing::Point(0, 719);
+			this->btn_Clear->Location = System::Drawing::Point(0, 777);
 			this->btn_Clear->Name = L"btn_Clear";
 			this->btn_Clear->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->btn_Clear->Size = System::Drawing::Size(130, 60);
@@ -238,11 +239,29 @@ namespace Annotation_Tool {
 			this->panelGenerate->Controls->Add(this->double_YOLO_btn);
 			this->panelGenerate->Controls->Add(this->btnYOLO);
 			this->panelGenerate->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panelGenerate->Location = System::Drawing::Point(0, 626);
+			this->panelGenerate->Location = System::Drawing::Point(0, 684);
 			this->panelGenerate->Name = L"panelGenerate";
 			this->panelGenerate->Size = System::Drawing::Size(130, 93);
 			this->panelGenerate->TabIndex = 7;
 			this->panelGenerate->Visible = false;
+			// 
+			// double_YOLO_btn
+			// 
+			this->double_YOLO_btn->Dock = System::Windows::Forms::DockStyle::Top;
+			this->double_YOLO_btn->FlatAppearance->BorderSize = 0;
+			this->double_YOLO_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->double_YOLO_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->double_YOLO_btn->ForeColor = System::Drawing::Color::Azure;
+			this->double_YOLO_btn->Location = System::Drawing::Point(0, 41);
+			this->double_YOLO_btn->Name = L"double_YOLO_btn";
+			this->double_YOLO_btn->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
+			this->double_YOLO_btn->Size = System::Drawing::Size(130, 41);
+			this->double_YOLO_btn->TabIndex = 1;
+			this->double_YOLO_btn->Text = L"Splitted YOLO";
+			this->double_YOLO_btn->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->double_YOLO_btn->UseVisualStyleBackColor = true;
+			this->double_YOLO_btn->Click += gcnew System::EventHandler(this, &MyForm::double_YOLO_btn_Click);
 			// 
 			// btnYOLO
 			// 
@@ -268,7 +287,7 @@ namespace Annotation_Tool {
 			this->btn_Generate->FlatAppearance->BorderSize = 0;
 			this->btn_Generate->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_Generate->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btn_Generate->Location = System::Drawing::Point(0, 566);
+			this->btn_Generate->Location = System::Drawing::Point(0, 624);
 			this->btn_Generate->Name = L"btn_Generate";
 			this->btn_Generate->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->btn_Generate->Size = System::Drawing::Size(130, 60);
@@ -284,7 +303,7 @@ namespace Annotation_Tool {
 			this->btnPrev->FlatAppearance->BorderSize = 0;
 			this->btnPrev->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnPrev->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btnPrev->Location = System::Drawing::Point(0, 506);
+			this->btnPrev->Location = System::Drawing::Point(0, 564);
 			this->btnPrev->Name = L"btnPrev";
 			this->btnPrev->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->btnPrev->Size = System::Drawing::Size(130, 60);
@@ -300,7 +319,7 @@ namespace Annotation_Tool {
 			this->btnNext->FlatAppearance->BorderSize = 0;
 			this->btnNext->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnNext->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btnNext->Location = System::Drawing::Point(0, 446);
+			this->btnNext->Location = System::Drawing::Point(0, 504);
 			this->btnNext->Name = L"btnNext";
 			this->btnNext->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->btnNext->Size = System::Drawing::Size(130, 60);
@@ -316,7 +335,7 @@ namespace Annotation_Tool {
 			this->btnSave->FlatAppearance->BorderSize = 0;
 			this->btnSave->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnSave->ForeColor = System::Drawing::Color::GhostWhite;
-			this->btnSave->Location = System::Drawing::Point(0, 386);
+			this->btnSave->Location = System::Drawing::Point(0, 444);
 			this->btnSave->Name = L"btnSave";
 			this->btnSave->Padding = System::Windows::Forms::Padding(10, 0, 0, 0);
 			this->btnSave->Size = System::Drawing::Size(130, 60);
@@ -330,6 +349,7 @@ namespace Annotation_Tool {
 			// 
 			this->panelFileSubMenu->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(161)),
 				static_cast<System::Int32>(static_cast<System::Byte>(161)), static_cast<System::Int32>(static_cast<System::Byte>(214)));
+			this->panelFileSubMenu->Controls->Add(this->btn_YOLO_Read);
 			this->panelFileSubMenu->Controls->Add(this->btn_Class);
 			this->panelFileSubMenu->Controls->Add(this->btnRead);
 			this->panelFileSubMenu->Controls->Add(this->btnDir);
@@ -337,9 +357,26 @@ namespace Annotation_Tool {
 			this->panelFileSubMenu->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panelFileSubMenu->Location = System::Drawing::Point(0, 213);
 			this->panelFileSubMenu->Name = L"panelFileSubMenu";
-			this->panelFileSubMenu->Size = System::Drawing::Size(130, 173);
+			this->panelFileSubMenu->Size = System::Drawing::Size(130, 231);
 			this->panelFileSubMenu->TabIndex = 1;
 			this->panelFileSubMenu->Visible = false;
+			// 
+			// btn_YOLO_Read
+			// 
+			this->btn_YOLO_Read->FlatAppearance->BorderSize = 0;
+			this->btn_YOLO_Read->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btn_YOLO_Read->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btn_YOLO_Read->ForeColor = System::Drawing::Color::Azure;
+			this->btn_YOLO_Read->Location = System::Drawing::Point(0, 120);
+			this->btn_YOLO_Read->Name = L"btn_YOLO_Read";
+			this->btn_YOLO_Read->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
+			this->btn_YOLO_Read->Size = System::Drawing::Size(148, 41);
+			this->btn_YOLO_Read->TabIndex = 4;
+			this->btn_YOLO_Read->Text = L"Labelled Files (YOLO Format)";
+			this->btn_YOLO_Read->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->btn_YOLO_Read->UseVisualStyleBackColor = true;
+			this->btn_YOLO_Read->Click += gcnew System::EventHandler(this, &MyForm::btn_YOLO_Read_Click);
 			// 
 			// btn_Class
 			// 
@@ -348,7 +385,7 @@ namespace Annotation_Tool {
 			this->btn_Class->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_Class->ForeColor = System::Drawing::Color::Azure;
-			this->btn_Class->Location = System::Drawing::Point(0, 123);
+			this->btn_Class->Location = System::Drawing::Point(-3, 164);
 			this->btn_Class->Name = L"btn_Class";
 			this->btn_Class->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
 			this->btn_Class->Size = System::Drawing::Size(151, 41);
@@ -370,7 +407,7 @@ namespace Annotation_Tool {
 			this->btnRead->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
 			this->btnRead->Size = System::Drawing::Size(151, 41);
 			this->btnRead->TabIndex = 2;
-			this->btnRead->Text = L"Labelled Files";
+			this->btnRead->Text = L"Labelled Files    (AT Format)";
 			this->btnRead->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			this->btnRead->UseVisualStyleBackColor = true;
 			this->btnRead->Click += gcnew System::EventHandler(this, &MyForm::btnRead_Click);
@@ -607,6 +644,7 @@ namespace Annotation_Tool {
 			this->listBox_BB->BackColor = System::Drawing::Color::WhiteSmoke;
 			this->listBox_BB->Dock = System::Windows::Forms::DockStyle::Top;
 			this->listBox_BB->FormattingEnabled = true;
+			this->listBox_BB->HorizontalScrollbar = true;
 			this->listBox_BB->ItemHeight = 20;
 			this->listBox_BB->Location = System::Drawing::Point(0, 37);
 			this->listBox_BB->Name = L"listBox_BB";
@@ -697,24 +735,6 @@ namespace Annotation_Tool {
 			this->deleteToolStripMenuItem1->Size = System::Drawing::Size(120, 24);
 			this->deleteToolStripMenuItem1->Text = L"delete";
 			this->deleteToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MyForm::deleteToolStripMenuItem1_Click);
-			// 
-			// double_YOLO_btn
-			// 
-			this->double_YOLO_btn->Dock = System::Windows::Forms::DockStyle::Top;
-			this->double_YOLO_btn->FlatAppearance->BorderSize = 0;
-			this->double_YOLO_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->double_YOLO_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->double_YOLO_btn->ForeColor = System::Drawing::Color::Azure;
-			this->double_YOLO_btn->Location = System::Drawing::Point(0, 41);
-			this->double_YOLO_btn->Name = L"double_YOLO_btn";
-			this->double_YOLO_btn->Padding = System::Windows::Forms::Padding(35, 0, 0, 0);
-			this->double_YOLO_btn->Size = System::Drawing::Size(130, 41);
-			this->double_YOLO_btn->TabIndex = 1;
-			this->double_YOLO_btn->Text = L"Splitted YOLO";
-			this->double_YOLO_btn->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->double_YOLO_btn->UseVisualStyleBackColor = true;
-			this->double_YOLO_btn->Click += gcnew System::EventHandler(this, &MyForm::double_YOLO_btn_Click);
 			// 
 			// MyForm
 			// 
@@ -1087,7 +1107,7 @@ namespace Annotation_Tool {
 
 		//Method for loading images in a directory
 		System::Void btnDir_Click(System::Object^  sender, System::EventArgs^  e) {
-			System::IO::DirectoryInfo^ info = gcnew System::IO::DirectoryInfo(System::IO::Directory::GetCurrentDirectory());
+			folderBrowserDialog1->SelectedPath = System::IO::Directory::GetCurrentDirectory();
 			if (folderBrowserDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
 				files = System::IO::Directory::GetFiles(folderBrowserDialog1->SelectedPath);
@@ -1097,7 +1117,7 @@ namespace Annotation_Tool {
 				MessageBox::Show("No directory selected");
 				return;
 			}
-
+			
 			Images_Bound_Boxes = new Box*[files->Length];
 			Images_BB_no = gcnew array<int>(files->Length);
 
@@ -1202,7 +1222,7 @@ namespace Annotation_Tool {
 			MessageBox::Show("Saved");
 		}
 
-		//Loading boundboxes from annotation file
+		//Loading boundboxes from annotation file (AT Format)
 		void Load_Bound_Boxes(String ^filename) {
 			FILE *file = fopen(context->marshal_as<const char*>(filename->ToString()), "r");
 			if (!file) {
@@ -1223,9 +1243,37 @@ namespace Annotation_Tool {
 			fclose(file);
 		}
 
+		//Loading boundboxes from YOLO Files (YOLO Format)
+		void YOLO_2_AT_Format(String ^filename) {
+			FILE *file = fopen(context->marshal_as<const char*>(filename->ToString()), "r");
+			if (!file) {
+				MessageBox::Show("Boundbox file box doesnot exist");
+				return;
+			}
+			int label_index, img_width=pictureBox1->Width, img_height=pictureBox1->Height;
+			float x, y, h, w;
+
+			if (Bound_Boxes != NULL) {
+				Bound_Boxes = NULL;
+				no_Bound_Boxes = 0;
+			}
+			while (fscanf(file, "%d %f %f %f %f", &label_index, &x, &y, &w, &h) == 5) {
+				w = w * img_width;
+				h = h * img_height;
+				x = (x * img_width) - w/2;
+				y = (y * img_height) - h/2;
+
+				x = (x < 0) ? 0 : x;
+				y = (y < 0) ? 0 : y;
+
+				Box new_box = { x, y, w, h, label_index };
+				Add_Box(new_box, false);
+			}
+			fclose(file);
+		}
 		//Reading Annotated Files
-		System::Void btnRead_Click(System::Object^  sender, System::EventArgs^  e) {
-			System::IO::DirectoryInfo^ info = gcnew System::IO::DirectoryInfo(System::IO::Directory::GetCurrentDirectory());
+		void load_Annotation_Files(bool is_AT_FORMAT) {
+			folderBrowserDialog1->SelectedPath = System::IO::Directory::GetCurrentDirectory();
 			if (folderBrowserDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
 				files = System::IO::Directory::GetFiles(folderBrowserDialog1->SelectedPath); //only txt
@@ -1236,11 +1284,11 @@ namespace Annotation_Tool {
 				return;
 			}
 
-			Images_Bound_Boxes = new Box*[files->Length/2];
-			Images_BB_no = gcnew array<int>(files->Length/2);
+			Images_Bound_Boxes = new Box*[files->Length / 2];
+			Images_BB_no = gcnew array<int>(files->Length / 2);
 
 			listBox_FL->Items->Clear();
-			for (int i = 0; i < files->Length; i+=2) {
+			for (int i = 0; i < files->Length; i += 2) {
 				listBox_FL->Items->Add(files[i]->ToString());
 			}
 
@@ -1248,15 +1296,26 @@ namespace Annotation_Tool {
 			image_index = 0;
 			is_read = true;
 
-			pictureBox1->Image = Image::FromFile(files[2*image_index]);
-			for (int i = 0; i < files->Length/2; i++) {
+			pictureBox1->Image = Image::FromFile(files[2 * image_index]);
+			for (int i = 0; i < files->Length / 2; i++) {
 				image_index = i;
-				Load_Bound_Boxes(files[(2*i)+1]);
+				if(is_AT_FORMAT) Load_Bound_Boxes(files[(2*i)+1]);	//Using AT Format
+				else YOLO_2_AT_Format(files[(2 * i) + 1]);	//Using YOLO Format
 			}
 
 			image_index = 0;
 			listBox_FL->SetSelected(image_index, true);
 			update_Listbox_BB();
+		}
+
+		//Read Annotations - AT FORMAT
+		System::Void btnRead_Click(System::Object^  sender, System::EventArgs^  e) {
+			load_Annotation_Files(true);
+		}
+
+		//Read Annotations - YOLO FORMAT
+		private: System::Void btn_YOLO_Read_Click(System::Object^  sender, System::EventArgs^  e) {
+			load_Annotation_Files(false);
 		}
 
 		//Read Classes
@@ -1299,14 +1358,18 @@ namespace Annotation_Tool {
 			int img_width = pictureBox1->Width;
 			int img_height = pictureBox1->Height;
 
+			//Note: Annotation tool boundbox format is <x, y, w, h> where <x, y> is the upper-left corner coordinate
 			for (int i = 0; i < Images_BB_no[image_index]; i++) {
-				double x = Images_Bound_Boxes[image_index][i].x;
-				double y = Images_Bound_Boxes[image_index][i].y;
+				if (Images_Bound_Boxes[image_index][i].label < 0) continue;
+
+				//finding boundbox center <x, y>
+				double x = Images_Bound_Boxes[image_index][i].x + (Images_Bound_Boxes[image_index][i].width/2.0);
+				double y = Images_Bound_Boxes[image_index][i].y + (Images_Bound_Boxes[image_index][i].height/ 2.0);
 
 				x = (x <= 0) ? 0.1 : x;
 				y = (y <= 0) ? 0.1 : y;
-
-				sw->WriteLine(Images_Bound_Boxes[image_index][i].label.ToString() + " " +
+				//Images_Bound_Boxes[image_index][i].label.ToString() + " " +
+				sw->WriteLine("0 " +
 					(x / img_width).ToString() + " " +
 					(y / img_height).ToString() + " " +
 					(Images_Bound_Boxes[image_index][i].width / img_width).ToString() + " " +
@@ -1324,6 +1387,35 @@ namespace Annotation_Tool {
 			image_index = temp;
 			MessageBox::Show("Saved YOLO Format of all annotated files in file list");
 		}
+
+		/*
+		int frame = 0;
+		void Split_Annotation(String^ filename, int no, int new_width, int new_height) {
+
+			String^ fname = System::IO::Path::GetFileNameWithoutExtension(filename);
+			String^ txt_filename = "files_YOLO_double/" + fname + "_" + no.ToString() + ".txt";
+
+			Bitmap^ bmp = gcnew Bitmap(Image::FromFile(filename));
+			Bitmap^ img_bmp;
+
+			int no_labels = labels->ToArray()->Length;
+			int img_width = pictureBox1->Width;
+			int img_height = pictureBox1->Height;
+
+			//Same height different width
+			if (no == 1) {
+				img_bmp = bmp->Clone(System::Drawing::Rectangle(0, 0, new_width, new_height), bmp->PixelFormat);
+				img_bmp->Save("1/" + "frame_" + frame.ToString()+ "_" + no.ToString() + ".jpg", System::Drawing::Imaging::ImageFormat::Jpeg);
+			}
+			else {
+				img_bmp = bmp->Clone(System::Drawing::Rectangle(img_width - new_width, img_height - new_height, new_width, new_height), bmp->PixelFormat);
+				img_bmp->Save("2/" + "frame_" + frame.ToString() + "_" + no.ToString() + ".jpg", System::Drawing::Imaging::ImageFormat::Jpeg);
+				frame++;
+			}
+
+
+		}
+		*/
 
 		void Split_Annotation(String^ filename, int no, int new_width, int new_height) {
 

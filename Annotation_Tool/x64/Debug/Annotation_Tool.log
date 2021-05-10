@@ -1,18 +1,22 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Microscope.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   MyForm.cpp
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(906): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(924): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(982): warning C4838: conversion from 'int' to 'double' requires a narrowing conversion
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1220): warning C4838: conversion from 'int' to 'double' requires a narrowing conversion
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1207): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(926): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(944): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1002): warning C4838: conversion from 'int' to 'double' requires a narrowing conversion
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1240): warning C4838: conversion from 'int' to 'double' requires a narrowing conversion
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1227): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1214): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1234): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: see declaration of 'fscanf'
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1219): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1239): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: see declaration of 'fscanf'
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1345): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1346): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1347): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1348): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1248): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1260): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: see declaration of 'fscanf'
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1437): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1438): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1439): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\seun backup\seun project\annotation_tool\annotation_tool\myform.h(1440): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Annotation_Tool.vcxproj -> D:\Seun Backup\Seun Project\Annotation_Tool\x64\Debug\Annotation_Tool.exe
